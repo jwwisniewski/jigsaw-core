@@ -1,6 +1,6 @@
 <?php
 
-namespace jwwisniewski\Jigsaw\Subpage;
+namespace jwwisniewski\Jigsaw\Core;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -34,6 +34,9 @@ class JigsawCoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(Jigsaw::class, static function () {
+            return new Jigsaw();
+        });
     }
 
     /**

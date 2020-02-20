@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace jwwisniewski\Jigsaw\Core\Traits;
+namespace jwwisniewski\Jigsaw\Core;
 
 class Jigsaw
 {
