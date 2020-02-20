@@ -8,8 +8,6 @@ use Illuminate\Support\Arr;
 
 trait MultiLangSupport
 {
-    protected $multiLang;
-
     private function getLocale(): string
     {
         return request()->get('editLang', config('jigsaw.defaultClientLocale'));
