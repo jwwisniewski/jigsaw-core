@@ -25,6 +25,7 @@ class JigsawCoreServiceProvider extends ServiceProvider
             __DIR__.'/../config/jigsaw.php' => config_path('jigsaw.php'),
         ]);
 
+        $this->loadViewsFrom(__DIR__.'/../views', 'jigsaw-core');
     }
 
     /**
