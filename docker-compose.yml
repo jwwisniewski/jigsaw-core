@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  phpfpm:
+    image: joshrob/php73fpm
+    volumes:
+      - .:/var/www/html

@@ -1,0 +1,15 @@
+{
+  "name": "jwwisniewski/jigsaw-core",
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "jwwisniewski\\Jigsaw\\Core\\": "src"
+    }
+  },
+  "require": {
+    "laravel/framework": "^6"
+  },
+  "minimum-stability": "stable"
+}
