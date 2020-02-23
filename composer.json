@@ -8,6 +8,13 @@
       "jwwisniewski\\Jigsaw\\Core\\": "src"
     }
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "jwwisniewski\\Jigsaw\\Core\\JigsawCoreServiceProvider"
+      ]
+    }
+  },
   "require": {
     "laravel/framework": "^6"
   },

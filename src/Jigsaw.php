@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace jwwisniewski\Jigsaw\Core\Traits;
+namespace jwwisniewski\Jigsaw\Core;
+
+use Illuminate\Support\Collection;
 
 class Jigsaw
 {
@@ -11,9 +13,14 @@ class Jigsaw
     public $instances = [];
 
     /**
-     * @var array
+     * @var Collection
      */
-    public $modules = [];
+    public $modules;
+
+    public function __construct()
+    {
+        $this->modules = new Collection();
+    }
 
     public function getInstances(): array
     {
@@ -27,15 +34,13 @@ class Jigsaw
         return $this;
     }
 
-    public function getModules(): array
+    public function getRegisteredModules(): Collection
     {
         return $this->modules;
     }
 
-    public function setModules(array $modules): Jigsaw
+    public function registerModule($class)
     {
-        $this->modules = $modules;
-
-        return $this;
+        $this->modules->add($class);
     }
 }

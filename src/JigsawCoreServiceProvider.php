@@ -1,6 +1,6 @@
 <?php
 
-namespace jwwisniewski\Jigsaw\Subpage;
+namespace jwwisniewski\Jigsaw\Core;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +25,9 @@ class JigsawCoreServiceProvider extends ServiceProvider
             __DIR__.'/../config/jigsaw.php' => config_path('jigsaw.php'),
         ]);
 
+        $this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
+        $this->loadViewsFrom(__DIR__.'/../views', 'jigsaw-core');
     }
 
     /**
@@ -34,6 +37,9 @@ class JigsawCoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(Jigsaw::class, static function () {
+            return new Jigsaw();
+        });
     }
 
     /**
