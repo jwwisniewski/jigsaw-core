@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 use jwwisniewski\Jigsaw\Core\Enum\SaveMode;
 use jwwisniewski\Jigsaw\Core\Instance;
 use jwwisniewski\Jigsaw\Core\Jigsaw;
+use jwwisniewski\Jigsaw\Core\Http\Requests\StoreInstance;
+use jwwisniewski\Jigsaw\Core\Http\Requests\UpdateInstance;
 
 class InstanceController extends Controller
 {
@@ -25,9 +27,7 @@ class InstanceController extends Controller
 
     public function create(Jigsaw $jigsaw)
     {
-        $modules = $jigsaw->getRegisteredModules()->mapWithKeys(static function ($module) {
-            return [$module => $module];
-        });
+        $modules = $jigsaw->getInstatniableModules();
 
         return view('jigsaw-core::instance.create', compact('modules'));
     }
@@ -57,9 +57,7 @@ class InstanceController extends Controller
 
     public function edit(Instance $instance, Jigsaw $jigsaw)
     {
-        $modules = $jigsaw->getRegisteredModules()->mapWithKeys(static function ( $module) {
-            return [$module => $module];
-        });
+        $modules = $jigsaw->getInstatniableModules();
 
         return view('jigsaw-core::instance.edit', compact('instance', 'modules'));
     }

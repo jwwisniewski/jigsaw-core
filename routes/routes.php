@@ -3,6 +3,9 @@ Route::middleware('web')
     ->namespace('jwwisniewski\Jigsaw\Core\Http\Controllers')
     ->group(function () {
         Route::prefix('_admin')->group(function () {
+            Route::get('/', function (){
+                return redirect()->route('dashboard.index');
+            });
             Route::get('/index', array('as' => 'dashboard.index', 'uses' => 'DashboardController@index'));
 
             Route::prefix('instance')->group(function (){

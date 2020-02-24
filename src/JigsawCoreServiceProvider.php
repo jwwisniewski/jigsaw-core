@@ -19,15 +19,31 @@ class JigsawCoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Jigsaw $jigsaw)
     {
         $this->publishes([
-            __DIR__.'/../config/jigsaw.php' => config_path('jigsaw.php'),
+            __DIR__ . '/../config/jigsaw.php' => config_path('jigsaw.php'),
         ]);
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
-        $this->loadMigrationsFrom(__DIR__.'/../migrations');
-        $this->loadViewsFrom(__DIR__.'/../views', 'jigsaw-core');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'jigsaw-core');
+        $this->loadTranslationsFrom(__DIR__ . '/../translations/instance', 'jigsaw-instance');
+
+        $jigsaw->registerModule(
+            Instance::class,
+            'instance',
+            'instance.index',
+            Module::NOT_INSTANTIABLE
+        );
+
+        $jigsaw->registerModule(
+            'dashboard',
+            'dashboard',
+            'dashboard.index',
+            Module::NOT_INSTANTIABLE
+        );
+
     }
 
     /**

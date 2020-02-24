@@ -22,16 +22,19 @@ class Jigsaw
         $this->modules = new Collection();
     }
 
-    public function getInstances(): array
+    public function getInstances($class = null): Collection
     {
-        return $this->instances;
+        if ($class === null) {
+            return Instance::all();
+        }
+        return Instance::where('module', '=', $class)->get();
     }
 
-    public function setInstances(array $instances): Jigsaw
+    public function getRunnableInstances($class = null): Collection
     {
-        $this->instances = $instances;
-
-        return $this;
+        return $this->getInstances($class)->mapWithKeys(static function (Instance $instance) {
+            return [$instance->id => $instance->title];
+        });
     }
 
     public function getRegisteredModules(): Collection
@@ -39,8 +42,22 @@ class Jigsaw
         return $this->modules;
     }
 
-    public function registerModule($class)
+    public function getInstatniableModules(): Collection
     {
-        $this->modules->add($class);
+        return $this->modules->filter(function (Module $module) {
+            return $module->instantiable === true;
+        })->mapWithKeys(static function (Module $module) {
+            return [$module->class => $module->name];
+        });
+    }
+
+    public function registerModule($class, $name, $routeName, $instantiable)
+    {
+        $this->modules->add(new Module(
+            $class,
+            $name,
+            $routeName,
+            $instantiable
+        ));
     }
 }

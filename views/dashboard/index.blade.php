@@ -6,6 +6,7 @@
 
 @foreach ($moduleList as $module)
 
-    {{ $module }} <br>
+    {{ link_to_route($module->routeName, $module->name, ['qwerty' => 'uiop']) }}
+
 @endforeach
 
