@@ -17,7 +17,7 @@ trait MultiLangSupport
     {
         $value = parent::getAttribute($key);
 
-        if ($value === null || $value === '' || !in_array($key, $this->multiLang, true)) {
+        if ($value === null || $value === '' || ! in_array($key, $this->multiLang, true)) {
             return $value;
         }
 
@@ -26,7 +26,7 @@ trait MultiLangSupport
 
     public function setAttribute($key, $value)
     {
-        if (!in_array($key, $this->multiLang, true)) {
+        if (! in_array($key, $this->multiLang, true)) {
             return parent::setAttribute($key, $value);
         }
 
@@ -46,7 +46,7 @@ trait MultiLangSupport
         }
 
         foreach ($attributes as $key => $value) {
-            if ($value === null || $value === '' || !in_array($key, $this->multiLang, true)) {
+            if ($value === null || $value === '' || ! in_array($key, $this->multiLang, true)) {
                 continue;
             }
 

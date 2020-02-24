@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class JigsawCoreServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -22,13 +21,13 @@ class JigsawCoreServiceProvider extends ServiceProvider
     public function boot(Jigsaw $jigsaw)
     {
         $this->publishes([
-            __DIR__ . '/../config/jigsaw.php' => config_path('jigsaw.php'),
+            __DIR__.'/../config/jigsaw.php' => config_path('jigsaw.php'),
         ]);
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-        $this->loadViewsFrom(__DIR__ . '/../views', 'jigsaw-core');
-        $this->loadTranslationsFrom(__DIR__ . '/../translations/instance', 'jigsaw-instance');
+        $this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
+        $this->loadViewsFrom(__DIR__.'/../views', 'jigsaw-core');
+        $this->loadTranslationsFrom(__DIR__.'/../translations/instance', 'jigsaw-instance');
 
         $jigsaw->registerModule(
             Instance::class,
@@ -43,7 +42,6 @@ class JigsawCoreServiceProvider extends ServiceProvider
             'dashboard.index',
             Module::NOT_INSTANTIABLE
         );
-
     }
 
     /**
@@ -66,5 +64,4 @@ class JigsawCoreServiceProvider extends ServiceProvider
     public function provides()
     {
     }
-
 }
