@@ -19,5 +19,4 @@ class Instance extends Model
 
     protected $multiLang = ['title', 'url', 'keywords', 'description'];
     protected $fillable = ['title', 'url', 'keywords', 'description', 'module'];
-
 }

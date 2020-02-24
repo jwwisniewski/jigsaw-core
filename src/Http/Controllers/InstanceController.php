@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 use jwwisniewski\Jigsaw\Core\Enum\SaveMode;
-use jwwisniewski\Jigsaw\Core\Instance;
-use jwwisniewski\Jigsaw\Core\Jigsaw;
 use jwwisniewski\Jigsaw\Core\Http\Requests\StoreInstance;
 use jwwisniewski\Jigsaw\Core\Http\Requests\UpdateInstance;
+use jwwisniewski\Jigsaw\Core\Instance;
+use jwwisniewski\Jigsaw\Core\Jigsaw;
 
 class InstanceController extends Controller
 {
@@ -35,7 +35,7 @@ class InstanceController extends Controller
     public function store(StoreInstance $request)
     {
         $validated = $request->validated();
-        if($validated['url'] === null) {
+        if ($validated['url'] === null) {
             $validated['url'] = $validated['title'];
         }
         $validated['url'] = Str::slug($validated['url']);
@@ -65,7 +65,7 @@ class InstanceController extends Controller
     public function update(UpdateInstance $request, Instance $instance)
     {
         $validated = $request->validated();
-        if($validated['url'] === null) {
+        if ($validated['url'] === null) {
             $validated['url'] = $validated['title'];
         }
         $validated['url'] = Str::slug($validated['url'], '-', $request->get('editLang'));
@@ -88,6 +88,5 @@ class InstanceController extends Controller
         $instance->delete();
 
         return redirect()->to(base64_decode($request->get('returnPath')));
-
     }
 }

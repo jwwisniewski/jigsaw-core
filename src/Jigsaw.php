@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace jwwisniewski\Jigsaw\Core;
@@ -27,6 +28,7 @@ class Jigsaw
         if ($class === null) {
             return Instance::all();
         }
+
         return Instance::where('module', '=', $class)->get();
     }
 
