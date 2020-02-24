@@ -7,5 +7,5 @@ return [
         'de' => 'german',
         'fr' => 'french',
     ],
-    'defaultClientLocale' => 'pl'
+    'defaultClientLocale' => 'pl',
 ];

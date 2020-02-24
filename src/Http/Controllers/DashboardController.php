@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 use jwwisniewski\Jigsaw\Core\Jigsaw;
 use jwwisniewski\Jigsaw\Core\Module;
 
-
 class DashboardController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

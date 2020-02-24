@@ -1,5 +1,5 @@
 <?php
 
 return [
-        'module-title' => 'Instances'
+    'module-title' => 'Instances',
 ];
