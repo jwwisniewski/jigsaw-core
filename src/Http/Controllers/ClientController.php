@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace jwwisniewski\Jigsaw\Core\Http\Controllers;
@@ -9,7 +10,7 @@ class ClientController
 {
     public function display(string $locale, string $path, Jigsaw $jigsaw)
     {
-        if(! array_key_exists($locale, config('jigsaw.availableClientLocales'))) {
+        if (! array_key_exists($locale, config('jigsaw.availableClientLocales'))) {
             abort(404);
         }
 
