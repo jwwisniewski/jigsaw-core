@@ -29,16 +29,10 @@ class Module
      */
     public $instantiable;
 
-    /**
-     * Module constructor.
-     * @param string $class
-     * @param string $name
-     * @param string $routeName
-     */
     public function __construct(string $class, string $name, string $routeName, bool $instantiable = false)
     {
         $this->class = $class;
-        $this->name = trans('jigsaw-'.$name.'::admin.module-title');
+        $this->name = trans('jigsaw-' . $name . '::admin.module-title');
         $this->routeName = $routeName;
         $this->instantiable = $instantiable;
     }

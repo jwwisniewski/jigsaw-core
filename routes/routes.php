@@ -3,6 +3,11 @@
 Route::middleware('web')
     ->namespace('jwwisniewski\Jigsaw\Core\Http\Controllers')
     ->group(function () {
+
+        Route::get('{locale}/{path}', 'ClientController@display')
+            ->where('locale', '([a-z]){2}')
+            ->where('path', '^(?!_admin).*$');
+
         Route::prefix('_admin')->group(function () {
             Route::get('/', function () {
                 return redirect()->route('dashboard.index');
@@ -18,4 +23,5 @@ Route::middleware('web')
                 Route::get('destroy/{instance}', ['as' => 'instance.destroy', 'uses' => 'InstanceController@destroy']);
             });
         });
+
     });

@@ -10,7 +10,7 @@ trait MultiLangSupport
 {
     private function getLocale(): string
     {
-        return request()->get('editLang', config('jigsaw.defaultClientLocale'));
+        return request()->get('editLang', \App::getLocale());
     }
 
     public function getAttribute($key)
